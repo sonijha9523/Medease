@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block head_title %}Medicines | {{ block.super}}{% endblock head_title %}
+
+{% block content %}
+<div class='row'>
+<div class='col-sm-6 col-sm-offset-3'>
+<h1>Medicines </h1>
+<table class="table">
+	<thead>
+      <tr>
+        <th>Name</th>
+        <th>Company Cost</th>
+        <th>Type</th>
+        <th>Lending Cost</th>
+        <th>Opening Unit</th>
+        <th>Recieving Unit</th>
+        <th>Closing Unit</th>
+        <th>Selling Unit</th>
+      </tr>
+    </thead>
+{% for med in Meds %}
+    <td>{{med.mname}}</td>
+    <td>{{med.company_cost}}</td>
+    <td>{{med.med_type}}</td>
+    <td>{{med.lending_cost}}</td>
+    <td>{{med.opening_unit}}</td>
+    <td>{{med.recieving_unit}}</td>
+    <td>{{med.closing_unit}}</td>
+    <td>{%= {{ med.opening_unit}}+{{med.recieving_unit}}%}
+{% endfor %}
+</table>
+
+</div>
+
+</div>
+{% endblock %}

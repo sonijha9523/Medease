@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block head_title %}Medicines | {{ block.super}}{% endblock head_title %}
+
+{% block content %}
+<div class='row'>
+<div class='col-sm-6 col-sm-offset-3'>
+<h1>Medicines </h1>
+<table class="table">
+	<thead>
+      <tr>
+        <th>Name</th>
+        <th>Company Cost</th>
+        <th>Type</th>
+        <th>Lending Cost</th>
+        <th>Opening Unit</th>
+        <th>Recieving Unit</th>
+        <th>Closing Unit</th>
+        <th>Selling Unit</th>
+      </tr>
+    </thead>
+{% for med_trans in MedResult.Transactions.all %}
+    <td>{{med_trans.mname_mapper}}</td>
+    <td>{{med_trans.company_cost}}</td>
+    <td>{{med_trans.med_type}}</td>
+    <td>{{med_trans.lending_cost}}</td>
+    <td>{{med_trans.opening_unit}}</td>
+    <td>{{med_trans.recieving_unit}}</td>
+    <td>{{med_trans.closing_unit}}</td>
+    <td onload="printfr({{med_trans.opening_unit}},{{med_trans.recieving_unit}},{{med_trans.closing_unit}})"></td>
+{% endfor %}
+
+</table>
+
+</div>
+
+</div>
+<script>
+
+function printfr(opening_unit,recieving_unit,closing_unit){
+    return opening_unit + opening_unit - closing_unit;
+}
+
+</script>
+{% endblock %}
